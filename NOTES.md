@@ -50,6 +50,23 @@
 
 
 
+TODO:
+
+-Navbar
+
+<!-- -Angular via Bower -->
+
+  -Ui-Router
+
+  -Templates
+
+-filter
+  -http requests
+
+
+
+
+
 
 ----------------------------------------
 
