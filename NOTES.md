@@ -52,13 +52,13 @@
 
 TODO:
 
--Navbar
+<!-- -Navbar -->
 
 <!-- -Angular via Bower -->
-
+<!--
   -Ui-Router
 
-  -Templates
+  -Templates -->
 
 -filter
   -http requests
@@ -79,3 +79,20 @@ TODO:
 -photo album
 
 -foursquare to search and add attractions
+
+------------------------------------------
+
+/foursquare
+  -search restaurants/coffee shops, shopping, etc
+  -Add to Trip (find or create)
+    -Adds the Attraction
+
+/city, country
+  -Add visited/wish-list to map
+  -Need to extract longitude/latitude coords.
+
+/attractions
+  -Find or Create by
+    -Name, address, zip
+      -Need to extract longitude/latitude coords.
+      
