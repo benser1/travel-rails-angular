@@ -6,7 +6,7 @@ function AttractionsCtrl($location, Attraction){
 
   ctrl.addAttraction = function() {
     ctrl.attraction.$save(function() {
-      $location.path('attractions');
+      $location.path('/home/attractions');
     });
   };
 }
