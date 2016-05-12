@@ -1,5 +1,5 @@
 class AttractionsController < ApplicationController
-
+  respond_to :json
   def index
     respond_with Attraction.all
   end
@@ -8,12 +8,18 @@ class AttractionsController < ApplicationController
     respond_with Attraction.find(params[:id])
   end
 
-  def new
-    respond_with Attraction.new
-  end
+  # def new
+  #   respond_with Attraction.new
+  # end
 
   def create
-    respond_with Attraction.create(attraction_params)
+    # respond_with Attraction.create(attraction_params)
+    @attraction = Attraction.new(attraction_params)
+    if @attraction.save
+      respond_to do |format|
+        format.json { render :json => @attraction }
+      end
+    end
   end
 
   def edit
@@ -30,7 +36,7 @@ class AttractionsController < ApplicationController
   private
 
   def attraction_params
-    params.require(:attraction).permit(:name, :address, :zip, :country_id, :city_id)
+    params.require(:attraction).permit(:name)
   end
 
 end # class end
