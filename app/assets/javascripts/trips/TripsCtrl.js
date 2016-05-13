@@ -1,8 +1,14 @@
-function TripsCtrl($location, Trip){
+function TripsCtrl($location, Trip, Auth){
   var ctrl = this;
 
   ctrl.trip = new Trip();
   ctrl.trips = Trip.query();
+
+  Auth.currentUser()
+    .then(function(user){
+      ctrl.user = user;
+      ctrl.trip.user_id = user.id;
+    });
 
   ctrl.addTrip = function() {
     ctrl.trip.$save(function() {
