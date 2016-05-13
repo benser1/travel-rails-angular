@@ -17,6 +17,16 @@ angular
           url: '/attractions',
           templateUrl: 'attractions/all.html',
           controller: 'AttractionsCtrl as ctrl'
+        })
+        .state('home.countries', {
+          url: '/countries',
+          templateUrl: 'countries/all.html',
+          controller: 'CountriesCtrl as ctrl'
+        })
+        .state('home.newCountry', {
+          url: '/newCountry',
+          templateUrl: 'countries/new.html',
+          controller: 'CountriesCtrl as ctrl'
         });
 
         $urlRouterProvider.otherwise('home');

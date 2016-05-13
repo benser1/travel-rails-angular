@@ -3,6 +3,18 @@
 <form ng-submit="ctrl.addAttraction()">
   <label for="name">Name</label>
   <input name="name" ng-model="ctrl.attraction.name">
+  <br>
+  <label for="address">address</label>
+  <input name="address" ng-model="ctrl.attraction.address">
+  <br>
+  <label for="zip">zip</label>
+  <input name="zip" ng-model="ctrl.attraction.zip">
+  <br>
+
+  <label for="countrySelect">Select Country</label>
+    <select style="display:inline" name="countrySelect" id="countrySelect" ng-model="ctrl.attraction.country_id" >
+        <option  ng-repeat="country in ctrl.countries" value="{{country.id}}">{{country.name}}</option>
+    </select>
 
   <input type="submit" value="Add Attraction">
 

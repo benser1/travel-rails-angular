@@ -51,7 +51,7 @@
 
 
 TODO:
-
+  -in attractions/new fix it so it shows the country name rather than just the id
 <!-- -Navbar -->
 
 <!-- -Angular via Bower -->
@@ -95,4 +95,3 @@ TODO:
   -Find or Create by
     -Name, address, zip
       -Need to extract longitude/latitude coords.
-      
