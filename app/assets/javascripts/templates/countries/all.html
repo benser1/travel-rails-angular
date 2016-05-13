@@ -2,6 +2,6 @@
 
 <div ng-repeat="country in ctrl.countries">
   <ul>
-    <li>Name: {{country.name}}</li>
+    <li><a href="#" ui-sref="home.showCountry({id: country.id})">{{country.name}}</a></li>
   </ul>
 </div>
