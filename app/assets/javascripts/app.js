@@ -28,6 +28,11 @@ angular
           templateUrl: 'countries/new.html',
           controller: 'CountriesCtrl as ctrl'
         })
+        .state('home.showCountry', {
+          url: '/countries/:id',
+          templateUrl: 'countries/show.html',
+          controller: 'ShowCountryController as ctrl'
+        })
         .state('home.newTrip', {
           url: '/newtrip',
           templateUrl: 'trips/new.html',
@@ -57,6 +62,16 @@ angular
               $state.go('home');
             })
           }]
+        })
+        .state('home.newCity', {
+          url: '/newcity',
+          templateUrl: 'cities/new.html',
+          controller: 'CitiesCtrl as ctrl'
+        })
+        .state('home.cities', {
+          url: '/cities',
+          templateUrl: 'cities/all.html',
+          controller: 'CitiesCtrl as ctrl'
         });
 
         $urlRouterProvider.otherwise('home');

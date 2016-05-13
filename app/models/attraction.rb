@@ -7,7 +7,7 @@ class Attraction < ActiveRecord::Base
   belongs_to :country
 
   def as_json(options = {})
-    super(options.merge(include: [:country]))
+    super(options.merge(include: [:country, :city]))
   end
 
 end

@@ -1,0 +1,9 @@
+<h1>Country Show Page</h1>
+
+<h3>{{ctrl.country.name}}</h3>
+
+<ul>
+  <li ng-repeat="city in ctrl.cities | filter:{country_id:ctrl.country.id}">
+    {{city.name}}
+  </li>
+</ul>
