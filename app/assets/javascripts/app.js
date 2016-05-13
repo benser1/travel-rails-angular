@@ -27,6 +27,7 @@ angular
           url: '/newCountry',
           templateUrl: 'countries/new.html',
           controller: 'CountriesCtrl as ctrl'
+        })
         .state('home.newTrip', {
           url: '/newtrip',
           templateUrl: 'trips/new.html',

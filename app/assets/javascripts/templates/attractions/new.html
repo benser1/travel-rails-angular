@@ -11,10 +11,12 @@
   <input name="zip" ng-model="ctrl.attraction.zip">
   <br>
 
-  <label for="countrySelect">Select Country</label>
-    <select style="display:inline" name="countrySelect" id="countrySelect" ng-model="ctrl.attraction.country_id" >
+
+    <select style="display:inline" ng-model="ctrl.attraction.country_id" >
+        <option value="" disabled selected>Select a Country</option>
         <option  ng-repeat="country in ctrl.countries" value="{{country.id}}">{{country.name}}</option>
     </select>
+    <!-- <country-select ng-model="ctrl.attraction.country_id"></country-select> -->
 
   <input type="submit" value="Add Attraction">
 

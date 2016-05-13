@@ -11,6 +11,7 @@ function AttractionsCtrl($location, Attraction, Country){
       $location.path('/home/attractions');
     });
   };
+
 }
 
 angular

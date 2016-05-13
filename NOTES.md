@@ -51,7 +51,7 @@
 
 
 TODO:
-  -in attractions/new fix it so it shows the country name rather than just the id
+
 <!-- -Navbar -->
 
 <!-- -Angular via Bower -->
