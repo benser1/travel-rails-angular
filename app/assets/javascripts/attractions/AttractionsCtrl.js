@@ -1,7 +1,8 @@
-function AttractionsCtrl($location, Attraction, Country){
+function AttractionsCtrl($location, Attraction, Country, City){
   var ctrl = this;
 
   ctrl.countries = Country.query();
+  ctrl.cities = City.query();
 
   ctrl.attraction = new Attraction();
   ctrl.attractions = Attraction.query();

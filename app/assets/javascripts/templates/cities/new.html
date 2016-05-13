@@ -1,0 +1,14 @@
+<h1>New City</h1>
+
+<form ng-submit="ctrl.addCity()">
+  <label for="name">Name</label>
+  <input name="name" ng-model="ctrl.city.name">
+  <br>
+  <select style="display:inline" ng-model="ctrl.city.country_id" >
+    <option value="" disabled selected>Select a Country</option>
+    <option  ng-repeat="country in ctrl.countries" value="{{country.id}}">{{country.name}}</option>
+  </select>
+
+  <input type="submit" value="Add City">
+
+</form>
