@@ -1,0 +1,7 @@
+<h1>City {{ctrl.city.name}}</h1>
+
+<div ng-repeat="attraction in ctrl.attractions | filter:{city_id:ctrl.city.id}">
+  <ul>
+    <li>Attraction: {{attraction.name}}</li>
+  </ul>
+</div>

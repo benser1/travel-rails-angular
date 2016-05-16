@@ -2,7 +2,7 @@
 
 <div ng-repeat="attraction in ctrl.attractions">
   <ul>
-    <li>Name: {{attraction.name}}</li>
+    <li>Name: <a href="#" ui-sref="home.showAttraction({id: attraction.id})">{{attraction.name}}</a></li>
     <li>Address: {{attraction.address}}</li>
     <li>Zip: {{attraction.zip}}</li>
     <li>City Name: {{attraction.city.name}}</li>

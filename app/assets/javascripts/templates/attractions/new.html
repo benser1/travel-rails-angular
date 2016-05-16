@@ -12,14 +12,14 @@
   <br>
 
   <select style="display:inline" ng-model="ctrl.attraction.city_id" >
-      <option value="" disabled selected>Select a City</option>
-      <option  ng-repeat="city in ctrl.cities" value="{{city.id}}">{{city.name}}</option>
+    <option value="" disabled selected>Select a City</option>
+    <option  ng-repeat="city in ctrl.cities" value="{{city.id}}">{{city.name}}</option>
   </select>
 
-    <select style="display:inline" ng-model="ctrl.attraction.country_id" >
-        <option value="" disabled selected>Select a Country</option>
-        <option  ng-repeat="country in ctrl.countries" value="{{country.id}}">{{country.name}}</option>
-    </select> 
+  <select style="display:inline" ng-model="ctrl.attraction.country_id" >
+    <option value="" disabled selected>Select a Country</option>
+    <option  ng-repeat="country in ctrl.countries" value="{{country.id}}">{{country.name}}</option>
+  </select>
 
   <input type="submit" value="Add Attraction">
 

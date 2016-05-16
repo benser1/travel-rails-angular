@@ -18,6 +18,11 @@ angular
           templateUrl: 'attractions/all.html',
           controller: 'AttractionsCtrl as ctrl'
         })
+        .state('home.showAttraction', {
+          url: '/attractions/:id',
+          templateUrl: 'attractions/show.html',
+          controller: 'ShowAttractionController as ctrl'
+        })
         .state('home.countries', {
           url: '/countries',
           templateUrl: 'countries/all.html',
@@ -67,6 +72,11 @@ angular
           url: '/newcity',
           templateUrl: 'cities/new.html',
           controller: 'CitiesCtrl as ctrl'
+        })
+        .state('home.showCity', {
+          url: '/cities/:id',
+          templateUrl: 'cities/show.html',
+          controller: 'ShowCityController as ctrl'
         })
         .state('home.cities', {
           url: '/cities',
