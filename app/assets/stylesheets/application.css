@@ -19,3 +19,10 @@
 .navbar-default {
   background-color: navy;
 }
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  padding-right: 20px;
+}
+.dropdown-menu li a {
+	padding: 5px 15px;
+	font-weight: 300;
+}

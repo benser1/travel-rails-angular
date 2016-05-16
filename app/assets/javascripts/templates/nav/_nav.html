@@ -1,56 +1,74 @@
   <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header page-scroll">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#page-top">Trip Planner</a>
-          </div>
+    <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#page-top">Trip Planner</a>
+    </div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
-            <div class="collapse navbar-collapse pull-right" ng-controller="NavCtrl">
-              <ul class="nav navbar-nav navbar-right">
-                  <li class="hidden">
-                      <a href="#" ></a>
-                  </li>
-                  <li class="page-scroll">
-                      <a ui-sref="home.newAttraction">New Attraction</a>
-                  </li>
-                  <li class="page-scroll">
-                      <a ui-sref="home.attractions">All Attractions</a>
-                  </li>
-                  <li class="page-scroll">
-                      <a ui-sref='home.countries'>All countries</a>
-                  </li>
-                  <li class="page-scroll">
-                      <a ui-sref='home.newCountry'>New Country</a>
-                      <a ui-sref="home.trips">All Trips</a>
-                  </li>
-                  <li class="page-scroll">
-                      <a ui-sref="home.newTrip">New Trip</a>
-                  </li>
-                  <li class="page-scroll">
-                      <a ui-sref="home.cities">All Cities</a>
-                  </li>
-                  <li class="page-scroll">
-                      <a ui-sref="home.newCity">New City</a>
-                  </li>
-                  <li class="page-scroll">
-                      <a href="#contact">Contact</a>
-                  </li>
-                  <li ng-hide="signedIn()"><a href="#/login">Log In</a></li>
-                  <li ng-hide="signedIn()"><a href="#/register">Register</a></li>
-                  <li ng-show="signedIn()"><a href="#/">{{ user.username }}</a></li>
-                  <li ng-show="signedIn()"><a ng-click="logout()">Log Out</a></li>
-              </ul>
-          </div>
-          <!-- /.navbar-collapse -->
-      </div>
-      <!-- /.container-fluid -->
+
+    <div class="collapse navbar-collapse" ng-controller="NavCtrl" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="hidden">
+            <a href="#" ></a>
+        </li>
+        <li class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown">Attractions <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="page-scroll">
+                <a ui-sref="home.newAttraction">New Attraction</a>
+            </li>
+            <li class="page-scroll">
+                <a ui-sref="home.attractions">All Attractions</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown">Countries <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="page-scroll">
+                <a ui-sref='home.countries'>All countries</a>
+            </li>
+            <li class="page-scroll">
+                <a ui-sref='home.newCountry'>New Country</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown">Trips<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <li class="page-scroll">
+              <a ui-sref="home.newTrip">New Trip</a>
+          </li>
+          <li class="page-scroll">
+            <a ui-sref="home.trips">All Trips</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="" class="dropdown-toggle" data-toggle="dropdown">Cities <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class="page-scroll">
+              <a ui-sref="home.cities">All Cities</a>
+          </li>
+          <li class="page-scroll">
+              <a ui-sref="home.newCity">New City</a>
+          </li>
+        </ul>
+      </li>
+
+      <li ng-hide="signedIn()"><a href="#/login">Log In</a></li>
+      <li ng-hide="signedIn()"><a href="#/register">Register</a></li>
+      <li ng-show="signedIn()"><a href="#/">{{ user.username }}</a></li>
+      <li ng-show="signedIn()"><a ng-click="logout()">Log Out</a></li>
+    </ul>
+  </div>
+
   </nav>
   <br><br>
