@@ -1,4 +1,4 @@
-function ShowCityController ($stateParams, City, Attraction) {
+function ShowCityController ($stateParams, City, Attraction, Country) {
   var ctrl = this;
 
   ctrl.city = City.get({ id: $stateParams.id });

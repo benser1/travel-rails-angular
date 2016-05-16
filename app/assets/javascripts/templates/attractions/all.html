@@ -5,8 +5,8 @@
     <li>Name: <a href="#" ui-sref="home.showAttraction({id: attraction.id})">{{attraction.name}}</a></li>
     <li>Address: {{attraction.address}}</li>
     <li>Zip: {{attraction.zip}}</li>
-    <li>City Name: {{attraction.city.name}}</li>
-    <li>Country Name: {{attraction.country.name}}</li>
+    <li>City Name: <a href="#" ui-sref="home.showCity({id: attraction.city.id})">{{attraction.city.name}}</a></li>
+    <li>Country Name: <a href="#" ui-sref="home.showCountry({id: attraction.country.id})">{{attraction.country.name}}</a></li>
     -------------------------------------------
   </ul>
 </div>
