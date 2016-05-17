@@ -2,15 +2,18 @@
   <h1>Register</h1>
 </div>
 
-<form ng-submit="register()">
-  <div class="input-group">
-    <input type="email" class="form-control" placeholder="Email" ng-model="user.email">
+<div class="new-country-form col-lg-5 col-md-4 col-sm-8 col-xs-4">
+  <div class="form-group">
+    <form ng-submit="register()">
+      <div class="input-group auth-form">
+        <input type="email" class="form-control col-lg-4 col-md-5 col-sm-6 col-xs-7" placeholder="Email" ng-model="user.email">
+        <br><br>
+        <input type="text" class="form-control col-lg-4 col-md-5 col-sm-6 col-xs-7" placeholder="Username" ng-model="user.username">
+        <br><br>
+        <input type="password" class="form-control col-lg-4 col-md-5 col-sm-6 col-xs-7" placeholder="Password" ng-model="user.password">
+        <br><br>
+        <input type="submit" class="col-lg-4 col-md-5 col-sm-6 col-xs-7 btn btn-primary" id="register-button" value="Register">
+      </div>
+    </form>
   </div>
-  <div class="input-group">
-    <input type="text" class="form-control" placeholder="Username" ng-model="user.username">
-  </div>
-  <div class="input-group">
-    <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
-  </div>
-  <input type="submit" class="btn btn-default" value="Register">
-</form>
+</div>

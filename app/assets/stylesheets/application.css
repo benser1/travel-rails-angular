@@ -21,6 +21,9 @@
    font-size: 3.3em;
    color: #41454E;
  }
+ .auth-form {
+   margin-left: 25%;
+ }
  .new-country-form {
   padding: 3% 0 2% 3%;
   margin-left: 33%;
@@ -41,8 +44,17 @@
 .form-name {
   font-size: 1.2em;
 }
-input[type="submit"] {
+/*input[type="submit"] {
   margin-bottom: 10px;
+  margin-left: 25%;
+}*/
+
+#city-button {
+  margin-bottom: 10px;
+  margin-left: 25%;
+}
+select {
+  margin: 10px 0 10px 0;
 }
 @media(max-width:767px) {
   .new-country-form {
@@ -51,6 +63,11 @@ input[type="submit"] {
   }
   input[type="submit"] {
     margin-top: 10px;
+    margin-left: 0;
+  }
+  #city-button {
+    margin-top: 10px;
+    margin-left: 0;
   }
   .form-name {
     margin-left: 15%;
@@ -61,9 +78,24 @@ input[type="submit"] {
     margin-top: 10px;
     /*margin-left: 25%;*/
   }
+  .auth-form {
+    margin-left: 5%;
+  }
+  #register-button {
+    width: 50%;
+  }
 }
 @media(min-width:1200px) {
+  #city-button {
+    margin-left: 25%;
+  }
+  select {
+    margin: 0 0 10px 10px;
+  }
   input[type="submit"] {
     margin-left: 10px;
+  }
+  #register-button {
+    width: 50%;
   }
 }
