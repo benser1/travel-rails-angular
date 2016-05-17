@@ -23,7 +23,7 @@
       </select>
       <br><br>
 
-      <select style="display:inline" ng-model="ctrl.attraction.city_id" class="col-lg-5 col-md-5 col-sm-7 col-xs-7 btn btn-default dropdown-toggle auth-select" ng-options="city as city.name for city in ctrl.cities | filter:{country_id:ctrl.attraction.country_id}" ng-disabled="!ctrl.attraction.country_id">
+      <select style="display:inline" ng-model="ctrl.attraction.city_id" class="col-lg-5 col-md-5 col-sm-7 col-xs-7 btn btn-default dropdown-toggle auth-select" ng-options="city.id as city.name for city in ctrl.cities | filter:{country_id:ctrl.attraction.country_id}" ng-disabled="!ctrl.attraction.country_id">
         <option value="" disabled selected>Select a City</option>
         <!-- <option  ng-repeat="city in ctrl.cities" value="{{city.id}}">{{city.name}}</option> -->
       </select>
