@@ -1,9 +1,12 @@
 <h1>New Country</h1>
 
-<form ng-submit="ctrl.addCountry()">
-  <label for="name">Name</label>
-  <input name="name" ng-model="ctrl.country.name">
-  <br>
-  <input type="submit" value="Add Country">
+<div class="new-country-form col-lg-5 col-md-4 col-sm-8 col-xs-4">
+  <div class="form-group">
+    <form ng-submit="ctrl.addCountry()">
+      <label for="name" class="col-lg-2 col-md-3 col-sm-4 col-xs-7 form-name">Name</label>
+      <input name="name" ng-model="ctrl.country.name" class="col-lg-4 col-md-5 col-sm-6 col-xs-7">
 
-</form>
+      <input type="submit" value="Add Country" class="col-lg-4 col-md-5 col-sm-6 col-xs-7 btn btn-primary">
+    </form>
+  </div>
+</div>

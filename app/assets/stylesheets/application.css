@@ -15,7 +15,19 @@
  *= require_self
  */
 
-
+ h1 {
+   text-align: center;
+   font-family: times, Times New Roman, times-roman, georgia, serif;
+   font-size: 3.3em;
+   color: #41454E;
+ }
+ .new-country-form {
+  padding: 3% 0 2% 3%;
+  margin-left: 33%;
+  box-shadow: 10px 10px 25px #888;
+  border-style: groove;
+  width: 35%;
+}
 .navbar-default {
   background-color: navy;
 }
@@ -25,4 +37,33 @@
 .dropdown-menu li a {
 	padding: 5px 15px;
 	font-weight: 300;
+}
+.form-name {
+  font-size: 1.2em;
+}
+input[type="submit"] {
+  margin-bottom: 10px;
+}
+@media(max-width:767px) {
+  .new-country-form {
+    margin-left: 10%;
+    width: 80%;
+  }
+  input[type="submit"] {
+    margin-top: 10px;
+  }
+  .form-name {
+    margin-left: 15%;
+  }
+}
+@media(min-width:767px) and (max-width:1199px) {
+  input[type="submit"] {
+    margin-top: 10px;
+    /*margin-left: 25%;*/
+  }
+}
+@media(min-width:1200px) {
+  input[type="submit"] {
+    margin-left: 10px;
+  }
 }
