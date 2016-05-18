@@ -1,5 +1,12 @@
 angular
-  .module('app', ['Devise', 'ui.router', 'templates', 'ngResource'])
+  .module('app', ['Devise', 'ui.router', 'templates', 'ngResource', 'uiGmapgoogle-maps'])
+  .config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+      key: 'AIzaSyC3KDZfo5MeuO0d86HpOhPej5uBKC5CRJs',
+      v: '3.17',
+      libraries: 'weather,geometry,visualization'
+     });
+  })
   .config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider){
       $stateProvider
@@ -82,6 +89,11 @@ angular
           url: '/cities',
           templateUrl: 'cities/all.html',
           controller: 'CitiesCtrl as ctrl'
+        })
+        .state('home.maps', {
+          url: '/maps',
+          templateUrl: 'maps/map.html',
+          controller: 'MapsCtrl as ctrl'
         });
 
         $urlRouterProvider.otherwise('home');

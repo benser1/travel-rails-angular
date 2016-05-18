@@ -14,7 +14,10 @@
  *= require_tree .
  *= require_self
  */
-
+ .angular-google-map-container {
+  height: 800px;
+  width: 800px;
+}
  h1 {
    text-align: center;
    font-family: times, Times New Roman, times-roman, georgia, serif;

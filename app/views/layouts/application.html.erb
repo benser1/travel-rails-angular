@@ -8,7 +8,17 @@
 </head>
 <body ng-app='app'>
 <div ng-include="'nav/_nav.html'"></div>
-<ui-view></ui-view>
-
+  <ui-view></ui-view>
+  <!-- <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3KDZfo5MeuO0d86HpOhPej5uBKC5CRJs&callback=initMap"
+    async defer></script> -->
 </body>
 </html>
