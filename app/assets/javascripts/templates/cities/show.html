@@ -1,7 +1,8 @@
 <h1>City {{ctrl.city.name}}, <a href="#" ui-sref="home.showCountry({id: ctrl.city.country.id})">{{ctrl.city.country.name}}</a></h1>
 
+<h2>Attractions:</h2>
 <div ng-repeat="attraction in ctrl.attractions | filter:{city_id:ctrl.city.id}">
   <ul>
-    <li>Attraction:<a href="#" ui-sref="home.showAttraction({id: attraction.id})">{{attraction.name}}</a></li>
+    <li><a href="#" ui-sref="home.showAttraction({id: attraction.id})">{{attraction.name}}</a></li>
   </ul>
 </div>

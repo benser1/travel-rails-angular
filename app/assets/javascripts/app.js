@@ -50,6 +50,11 @@ angular
           templateUrl: 'trips/new.html',
           controller: 'TripsCtrl as ctrl'
         })
+        .state('home.showTrip', {
+          url: '/trips/:id',
+          templateUrl: 'trips/show.html',
+          controller: 'ShowTripsController as ctrl'
+        })
         .state('home.trips', {
           url: '/trips',
           templateUrl: 'trips/all.html',

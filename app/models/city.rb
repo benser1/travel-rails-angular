@@ -4,7 +4,7 @@ class City < ActiveRecord::Base
   has_many :attractions
 
   def as_json(options = {})
-    super(options.merge(include: [:country]))
+    super(options.merge(include: [:country, :attractions]))
   end
 
 end

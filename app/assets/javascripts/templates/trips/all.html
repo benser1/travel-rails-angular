@@ -2,6 +2,6 @@
 
 <div ng-repeat="trip in ctrl.trips">
   <ul>
-    <li>{{ trip.name }} - {{ trip.user.username }}</li>
+    <li><a href="" ui-sref="home.showTrip({id: trip.id})">{{ trip.name }}</a> - {{ trip.user.username }}</li>
   </ul>
 </div>
