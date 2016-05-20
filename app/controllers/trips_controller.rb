@@ -22,14 +22,22 @@ class TripsController < ApplicationController
   end
 
   def update
-    trip = Trip.find(params[:id])
-    trip.update(trip_params)
-
-    respond_with trip
+    @trip = Trip.find(params[:id])
+    attraction = Attraction.find(params[:attractions].last[:id])
+    if !@trip.attractions.include?(attraction)
+      @trip.attractions << attraction
+      @trip.update(trip_params)
+      respond_to do |format|
+        format.json { render :json => @trip }
+      end
+    end
+    @trip.update(trip_params)
+    respond_to do |format|
+      format.json { render :json => @trip }
+    end
   end
 
   private
-
   def trip_params
     params.require(:trip).permit(:name, :user_id)
   end

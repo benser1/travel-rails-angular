@@ -1,5 +1,5 @@
 function Trip($resource) {
-  var Trip = $resource('http://localhost:3000/trips/:id.json', {id: '@id'}, {
+  var Trip = $resource('/trips/:id.json', {id: '@id'}, {
   update: { method: 'PUT' }
 });
   return Trip;

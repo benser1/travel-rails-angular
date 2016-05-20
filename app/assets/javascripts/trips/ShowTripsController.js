@@ -2,6 +2,7 @@ function ShowTripsController ($stateParams, Trip) {
   var ctrl = this;
 
   ctrl.trip = Trip.get({ id: $stateParams.id });
+
 }
 
 angular
