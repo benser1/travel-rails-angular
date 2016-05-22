@@ -7,7 +7,17 @@
     <li>Zip: {{attraction.zip}}</li>
     <li>City Name: <a href="#" ui-sref="home.showCity({id: attraction.city.id})">{{attraction.city.name}}</a></li>
     <li>Country Name: <a href="#" ui-sref="home.showCountry({id: attraction.country.id})">{{attraction.country.name}}</a></li>
-    <!-- <button ng-click="ctrl.deleteAttraction(attraction)">Delete</button> -->
-    -------------------------------------------
+    <li>
+      <select style="display:inline" ng-model="ctrl.trip" class="col-lg-5 col-md-5 col-sm-7 col-xs-7 btn btn-default dropdown-toggle auth-select" ng-options="trip.id as trip.name for trip in ctrl.trips"  ng-required>
+      <option value="" disabled selected>Select a Trip</option>
+    </select>
+  </li>
+    <li>
+      <form ng-submit="ctrl.addToTrip(attraction)">
+
+        <br><br>
+        <button class="btn btn-default" type="submit">Add to Trip</button>
+      </form>
+    </li>
   </ul>
 </div>

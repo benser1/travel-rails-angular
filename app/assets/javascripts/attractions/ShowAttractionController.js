@@ -1,4 +1,5 @@
 function ShowAttractionController ($stateParams, $http, $state, $location, Auth, City, Attraction, Country) {
+
   var ctrl = this;
 
   ctrl.attraction = Attraction.get({ id: $stateParams.id });
