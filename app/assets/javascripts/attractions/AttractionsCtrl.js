@@ -13,6 +13,13 @@ function AttractionsCtrl($location, Attraction, Country, City){
     });
   };
 
+  // ctrl.deleteAttraction = function(attraction) {
+  //   ctrl.attraction.$delete(function(attraction) {
+  //     console.log('successfully deleted');
+  //   });
+  // };
+
+
 }
 
 angular

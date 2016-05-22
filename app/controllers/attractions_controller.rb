@@ -26,11 +26,34 @@ class AttractionsController < ApplicationController
     attraction = Attraction.find(params[:id])
   end
 
-  def update
-    attraction = Attraction.find(params[:id])
-    attraction.update(attraction_params)
+  # def update
+  #   attraction = Attraction.find(params[:id])
+  #   attraction.update(attraction_params)
+  #
+  #   respond_with attraction
+  # end
 
-    respond_with attraction
+  def update
+    @attraction = Attraction.find(params[:id])
+    user = current_user
+    # user = User.find(params[:user_id] || params[:id])
+    if !@attraction.visitors.include?(user)
+      @attraction.visitors << user
+      @attraction.update(attraction_params)
+      respond_to do |format|
+        format.json { render :json => @attraction }
+      end
+    end
+    # @attraction.update(attraction_params)
+    # respond_to do |format|
+    #   format.json { render :json => @attraction }
+    # end
+  end
+
+  def destroy
+    # respond_with(Attraction.destroy(params[:id]))
+    attraction = Attraction.find(params[:id])
+    respond_with attraction.destroy
   end
 
   private
