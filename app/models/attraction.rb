@@ -10,6 +10,10 @@ class Attraction < ActiveRecord::Base
   belongs_to :user
   has_many :visitors, through: :visits, source: :user
 
+  # def as_json(options = {})
+  #   super(options.merge(include: [:country, :city, :visits, :users, :trips]))
+  # end
+
   def as_json(options = {})
     super(options.merge(include: [:country, :city, :visits, :visitors]))
   end

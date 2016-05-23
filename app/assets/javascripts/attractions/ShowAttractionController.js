@@ -1,10 +1,26 @@
 function ShowAttractionController ($stateParams, $scope, $rootScope, $http, $state, $location, uiGmapGoogleMapApi, Auth, City, Attraction, Country) {
 
+
   var ctrl = this;
 
   ctrl.attraction = Attraction.get({ id: $stateParams.id });
   ctrl.cities = City.query();
   ctrl.countries = Country.query();
+
+
+  /////////////
+  // ctrl.trips = Trip.query();
+  //
+  //
+  // ctrl.addToTrip = function() {
+  //   ctrl.trip = Trip.get({ id: $scope.trippy });
+  //   ctrl.attraction.trips.push(ctrl.trip);
+  //   ctrl.attraction.$update(function(result) {
+  //     console.log(result);
+  //   });
+  // };
+  /////////////
+
 
   Auth.currentUser()
   .then(function(user){
@@ -86,6 +102,7 @@ function ShowAttractionController ($stateParams, $scope, $rootScope, $http, $sta
   //   }
   //   return check;
   // }
+
 }
 
 angular

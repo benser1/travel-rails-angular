@@ -36,7 +36,6 @@ class AttractionsController < ApplicationController
   def update
     @attraction = Attraction.find(params[:id])
     user = current_user
-    # user = User.find(params[:user_id] || params[:id])
     if !@attraction.visitors.include?(user)
       @attraction.visitors << user
       @attraction.update(attraction_params)

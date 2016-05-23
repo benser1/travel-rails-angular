@@ -6,6 +6,23 @@
 <h3>{{ctrl.attraction.name}}</h3>
 <h4>{{ctrl.attraction.address}}</h4>
 <h4>{{ctrl.attraction.zip}}</h4>
+
+<!-- <div ng-repeat="trip in ctrl.attraction.trips">
+  <h4>{{trip}}</h4>
+
+</div>
+
+
+
+<form ng-submit="ctrl.addToTrip()">
+  <select style="display:inline" ng-model="trippy" class="col-lg-5 col-md-5 col-sm-7 col-xs-7 btn btn-default dropdown-toggle auth-select" ng-required>
+  <option value="" disabled selected>Select a Trip</option>
+  <option  ng-repeat="trip in ctrl.trips" value="{{trip.id}}">{{trip.name}}</option>
+  </select>
+  <br><br>
+  <button class="btn btn-default" type="submit">Add to Trip</button>
+</form> -->
+
 <button ng-click="ctrl.deleteAttraction(ctrl.attraction)">Delete</button>
 
 <!-- <button ng-click="ctrl.addVisitor(ctrl.user)">Add Visitor</button>
