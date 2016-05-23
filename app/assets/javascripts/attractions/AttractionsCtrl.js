@@ -27,6 +27,7 @@ function AttractionsCtrl($location, Attraction, Country, City, Trip, $scope){
     });
   };
 
+
 /////////
 
 // ctrl.trips = Trip.query();
@@ -39,6 +40,14 @@ function AttractionsCtrl($location, Attraction, Country, City, Trip, $scope){
 //     console.log(result);
 //   });
 // };
+
+  // ctrl.deleteAttraction = function(attraction) {
+  //   ctrl.attraction.$delete(function(attraction) {
+  //     console.log('successfully deleted');
+  //   });
+  // };
+
+
 }
 
 angular

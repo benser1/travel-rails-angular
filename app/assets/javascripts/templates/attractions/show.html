@@ -1,4 +1,7 @@
 <h1>Attraction</h1>
+<h4>Been Here?</h4>
+<!-- <button ng-click="ctrl.logVisited()" ng-class="ctrl.checkVisited(ctrl.attraction.visitors) ? 'btn btn-success' : 'btn btn-primary' ">Yes</button> -->
+
 <h2><a href="#" ui-sref="home.showCity({id: ctrl.attraction.city.id})">{{ctrl.attraction.city.name}}</a>,<a href="#" ui-sref="home.showCountry({id: ctrl.attraction.country.id})"> {{ctrl.attraction.country.name}}</a></h2>
 <h3>{{ctrl.attraction.name}}</h3>
 <h4>{{ctrl.attraction.address}}</h4>
@@ -19,3 +22,7 @@
   <br><br>
   <button class="btn btn-default" type="submit">Add to Trip</button>
 </form> -->
+
+<button ng-click="ctrl.deleteAttraction(ctrl.attraction)">Delete</button>
+
+<button ng-click="ctrl.addVisitor(ctrl.user)">Add Visitor</button>
