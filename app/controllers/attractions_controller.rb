@@ -27,10 +27,20 @@ class AttractionsController < ApplicationController
   end
 
   def update
-    attraction = Attraction.find(params[:id])
-    attraction.update(attraction_params)
-
-    respond_with attraction
+    @attraction = Attraction.find(params[:id])
+    trip = Trip.find(params[:trip_id] || params[:id])
+    if !@attraction.trips.include?(trip)
+      @attraction.trips << trip
+      @attraction.save
+      @attraction.update(attraction_params)
+      respond_to do |format|
+        format.json { render :json => @attraction }
+      end
+    end
+    @attraction.update(attraction_params)
+    respond_to do |format|
+      format.json { render :json => @attraction }
+    end
   end
 
   private
