@@ -1,7 +1,5 @@
 log = require('util').log
 _ = require 'lodash'
-kickoff = require 'karma-kickoff'
-argv = require('yargs').argv
 
 module.exports = (grunt) ->
   # Load the required plugins
@@ -17,16 +15,17 @@ module.exports = (grunt) ->
     "grunt-open"
     "grunt-mkdir"
     "grunt-contrib-coffee"
+    "grunt-contrib-jasmine"
     "grunt-conventional-changelog"
     "grunt-bump"
     'grunt-replace'
     'grunt-subgrunt'
     'grunt-debug-task'
+    'grunt-curl'
     'grunt-verbosity'
     'grunt-webpack'
-    'grunt-angular-architecture-graph'
-    'grunt-ng-annotate'
-    ].forEach (gruntLib) -> grunt.loadNpmTasks gruntLib
+    ].forEach (gruntLib) ->
+      grunt.loadNpmTasks gruntLib
 
   #squishing this file done by moving grunt options out to its own file. This way we can focus on tasks!
   options = require('./grunt/options')(grunt)
@@ -41,8 +40,6 @@ module.exports = (grunt) ->
     allExamplesOpen[root] =
       path: pathValue
 
-#  console.log allExamplesOpen, true
-
   showOpenType = (toIterate = allExamplesOpen) ->
     _(toIterate).each (v, k) ->
       log "#{k} -> #{v.path}"
@@ -50,21 +47,23 @@ module.exports = (grunt) ->
   options.open = _.extend options.open, allExamplesOpen
   grunt.initConfig options
 
-  grunt.registerTask 'build', ['bower', 'clean:dist', 'jshint', 'mkdir', 'coffee', 'ngAnnotate',
-  'concat:libs', 'replace', 'webpack']
-
-  grunt.registerTask 'buildDist', ['build', 'concat:dist']
-
-  grunt.registerTask "default", [ 'verbosity', 'buildDist', 'copy', 'uglify:dist', 'uglify:streetview', 'karma']
-
-  grunt.registerTask "buildAll", [ "build", "concat",
-    "uglify", "copy", "karma", "graph"]
+  # Default task: build a release in dist/
+  grunt.registerTask "default", [
+    'bower', 'curl',
+    'verbosity', 'clean:dist', 'jshint', 'mkdir', 'coffee',
+    'concat:libs', 'replace', 'webpack', 'concat:dist',
+    'copy', 'uglify::dist', 'jasmine:consoleSpec']
 
   # run default "grunt" prior to generate _SpecRunner.html
-  grunt.registerTask "spec", [ 'verbosity', "buildDist",
-    "copy", "karma", "open:jasmine", "watch:spec"]
+  grunt.registerTask "spec", [
+    'bower', 'curl',
+    'verbosity', "clean:dist", "jshint", "mkdir", "coffee", "concat:libs", "replace", "webpack", "concat",
+    "copy", "connect:jasmineServer", "jasmine:spec", "open:jasmine", "watch:spec"]
 
-  grunt.registerTask "coverage", ['connect:coverage','open:coverage', "watch:spec"]
+  grunt.registerTask "coverage", [
+    'bower', 'curl',
+    "clean:dist", "jshint", "mkdir", "coffee", "concat:libs", "replace", "concat:dist",
+    "copy", "uglify:dist", "jasmine:coverage"]
 
   grunt.registerTask 'default-no-specs', [
     "clean:dist", "jshint", "mkdir", "coffee", "concat:libs", "replace", "concat:dist",
@@ -74,36 +73,35 @@ module.exports = (grunt) ->
 
   dev = ["clean:dist", "jshint", "mkdir", "coffee", "concat:libs", "replace", "webpack", "concat", "copy"]
 
-  grunt.registerTask "dev", dev.concat ["uglify:distMapped", "uglify:streetviewMapped", "karma"]
+  grunt.registerTask "dev", dev.concat ["uglify:distMapped", "jasmine:spec"]
 
-  grunt.registerTask "fast", dev.concat ["karma"]
+  grunt.registerTask "fast", dev.concat ["jasmine:spec"]
 
-
-  grunt.registerTask "build-street-view", ['clean:streetview','mkdir','coffee', 'concat:libs', 'replace',
-    'concat:streetview', 'concat:streetviewMapped', 'uglify:streetview', 'uglify:streetviewMapped']
-
+  grunt.registerTask "mappAll", [
+    'bower', 'curl',
+    "clean:dist", "jshint", "mkdir", "coffee", "concat:libs", "replace", "webpack", "concat", "uglify"
+    "copy", "jasmine:spec"]
 
   # Run the example page by creating a local copy of angular-google-maps.js
   # and running a webserver on port 3100 with livereload. Web page is opened
   # automatically in the default browser.
-  grunt.registerTask 'graph', ['angular_architecture_graph']
 
-  grunt.registerTask 'bump-@-preminor', ['changelog', 'bump-only:preminor', 'buildAll', 'bump-commit']
-  grunt.registerTask 'bump-@-prerelease', ['changelog','bump-only:prerelease', 'buildAll', 'bump-commit']
-  grunt.registerTask 'bump-@', ['changelog','bump-only', 'buildAll', 'bump-commit']
-  grunt.registerTask 'bump-@-minor', ['changelog','bump-only:minor', 'buildAll', 'bump-commit']
-  grunt.registerTask 'bump-@-major', ['changelog','bump-only:major', 'buildAll', 'bump-commit']
+  grunt.registerTask 'bump-@-preminor', ['bump-only:preminor', 'mappAll', 'bump-commit']
+  grunt.registerTask 'bump-@-prerelease', ['bump-only:prerelease', 'mappAll', 'bump-commit']
+  grunt.registerTask 'bump-@', ['bump-only', 'mappAll', 'bump-commit']
+  grunt.registerTask 'bump-@-minor', ['bump-only:minor', 'mappAll', 'bump-commit']
+  grunt.registerTask 'bump-@-major', ['bump-only:major', 'mappAll', 'bump-commit']
 
   exampleOpenTasks = []
-
-  _.each allExamplesOpen, (v, key) ->
+  _(allExamplesOpen).each (v, key) ->
     basicTask = "open:" + key
     #register individual task (runs by itself)
-
     grunt.registerTask key, ["fast", "clean:example", "connect:server", basicTask, "watch:all"]
     exampleOpenTasks.push basicTask
 
+  #  allExamplesTaskToRun = ["clean:example", "connect:server"].concat(['open:free-draw-polygons','open:example']).concat ['watch:all']
   allExamplesTaskToRun = ["fast", "clean:example", "connect:server"].concat(exampleOpenTasks).concat ['watch:all']
+
 
   listWithQuotes = (collection, doLog = true) ->
     last = collection.length - 1
@@ -123,22 +121,4 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'allExamples', allExamplesTaskToRun
 
-  grunt.registerTask 'server', ["connect:server", "watch:all"]
-  grunt.registerTask 's', 'server'
-
-  grunt.registerTask 'karma', 'karma runner', ->
-    kickoff @async(),
-      logFn: grunt.log.oklns
-      configFile: require.resolve './karma.conf.coffee'
-
-  grunt.registerTask 'karmaSpecific', 'karma runner', ->
-    kickoff @async(),
-      configFile: require.resolve './karma.conf.coffee'
-      logFn: grunt.log.oklns
-      appendFiles: argv.files.split(',')
-      lengthToPop: 1
-      reporters: ['mocha']
-
-  grunt.registerTask 'buildSpecFile', ['buildDist', 'karmaSpecific']
-  grunt.registerTask 'buildSpec', ['buildDist', 'karma']
 #to see all tasks available don't forget "grunt --help" !!!
