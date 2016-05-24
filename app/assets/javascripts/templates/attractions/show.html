@@ -1,51 +1,8 @@
 <h1>Attraction</h1>
-<!-- <h4>Been Here?</h4> -->
-<!-- <button ng-click="ctrl.logVisited()" ng-class="ctrl.checkVisited(ctrl.attraction.visitors) ? 'btn btn-success' : 'btn btn-primary' ">Yes</button> -->
 
 <h2><a href="#" ui-sref="home.showCity({id: ctrl.attraction.city.id})">{{ctrl.attraction.city.name}}</a>,<a href="#" ui-sref="home.showCountry({id: ctrl.attraction.country.id})"> {{ctrl.attraction.country.name}}</a></h2>
 <h3>{{ctrl.attraction.name}}</h3>
 <h4>{{ctrl.attraction.address}}</h4>
 <h4>{{ctrl.attraction.zip}}</h4>
 
-<!-- <div ng-repeat="trip in ctrl.attraction.trips">
-  <h4>{{trip}}</h4>
-
-</div>
-
-
-
-<form ng-submit="ctrl.addToTrip()">
-  <select style="display:inline" ng-model="trippy" class="col-lg-5 col-md-5 col-sm-7 col-xs-7 btn btn-default dropdown-toggle auth-select" ng-required>
-  <option value="" disabled selected>Select a Trip</option>
-  <option  ng-repeat="trip in ctrl.trips" value="{{trip.id}}">{{trip.name}}</option>
-  </select>
-  <br><br>
-  <button class="btn btn-default" type="submit">Add to Trip</button>
-</form> -->
-
 <button ng-click="ctrl.deleteAttraction(ctrl.attraction)">Delete</button>
-
-<!-- <button ng-click="ctrl.addVisitor(ctrl.user)">Add Visitor</button>
-
-<ui-gmap-google-map center="ctrl.mapA.center" zoom="ctrl.mapA.zoom">
-  <ui-gmap-marker ng-repeat="marker in ctrl.visitedList" idKey='marker.id' coords='marker.coords' options='marker.options'>
-</ui-gmap-marker>
-</ui-gmap-google-map> -->
-<div ng-show='ctrl.stateIsLoading' class="row">
-  <h3>Loading data... Please wait.</h3>
-    <div class="progress progress-striped active page-progress-bar">
-      <div class="progress-bar" style="width: 100%;"></div>
-    </div>
-</div>
-
-<div ng-hide='ctrl.stateIsLoading'>
-  <h2 class="page-header">Beaches Visited</h2>
-</div>
-<ui-gmap-google-map center="ctrl.mapA.center" zoom="ctrl.mapA.zoom">
-  <ui-gmap-marker ng-repeat="marker in ctrl.visitedList"
-    idKey='marker.id'
-    coords='marker.coords'
-    options='marker.options'
-    >
-  </ui-gmap-marker>
-</ui-gmap-google-map>
