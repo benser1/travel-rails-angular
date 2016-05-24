@@ -1,32 +1,26 @@
 class UsersController < ApplicationController
-
+  respond_to :json
   def index
     respond_with User.all
   end
 
-  # def visited
-  #   attractions = current_user.visited_attractions
-  # end
+  def visited
+    attractions = current_user.visited_attractions
+    render json: attractions
+  end
+
+  def wishlist
+    attractions = current_user.wishlist_attractions
+    render json: attractions
+  end
 
   def show
-    respond_with User.find(params[:id])
+    user = User.find(params[:user_id] || params[:id])
+    render json: user
   end
 
   def update
     @user = current_user.update(user_params)
-    # attraction = Attraction.find(params[:attraction_id] || params[:id])
-    # if !@user.visits.include?(attraction)
-    #   @user.visits << attraction
-    #   @user.save
-    #   @user.update
-    #   respond_to do |format|
-    #     format.json { render :json => @user }
-    #   end
-    # end
-    # @user.update
-    # respond_to do |format|
-    #   format.json { render :json => @user }
-    # end
   end
 
   private

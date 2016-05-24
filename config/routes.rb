@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   resources :attractions
   resources :cities
   resources :countries
-  resources :users 
+  resources :users do
+    member do
+      get 'visited'
+      get 'wishlist'
+    end
+  end
 
   root 'application#home'
 

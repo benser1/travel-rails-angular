@@ -94,9 +94,14 @@ angular
           templateUrl: 'cities/all.html',
           controller: 'CitiesCtrl as ctrl'
         })
-        .state('home.maps', {
+        .state('home.visited', {
           url: '/visited',
-          templateUrl: 'maps/map.html',
+          templateUrl: 'maps/visited.html',
+          controller: 'MapsCtrl as ctrl'
+        })
+        .state('home.wishlist', {
+          url: '/wishlist',
+          templateUrl: 'maps/wishlist.html',
           controller: 'MapsCtrl as ctrl'
         });
 

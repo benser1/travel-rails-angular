@@ -1,0 +1,19 @@
+<h1>Maps</h1>
+
+<div ng-show='ctrl.stateIsLoading' class="container">
+  <h3>Loading data... Please wait.</h3>
+    <div class="progress progress-striped active page-progress-bar">
+      <div class="progress-bar" style="width: 90%;"></div>
+    </div>
+</div> 
+
+<div ng-hide='ctrl.stateIsLoading'>
+</div>
+<ui-gmap-google-map center="ctrl.map.center" zoom="ctrl.map.zoom">
+  <ui-gmap-marker ng-repeat="marker in ctrl.visitedList"
+    idKey='marker.id'
+    coords='marker.coords'
+    options='marker.options'
+    >
+  </ui-gmap-marker>
+</ui-gmap-google-map>

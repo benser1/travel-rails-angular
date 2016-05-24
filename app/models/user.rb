@@ -4,16 +4,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
-  has_many :trips
-  has_many :attractions
   has_many :visits
   has_many :attractions, through: :visits
   has_many :visited_attractions, through: :visits, source: :attraction
+  has_many :wishlist_attractions, through: :visits, source: :attraction
+  has_many :wishlists
+  has_many :attractions, through: :wishlists
 
 
   def as_json(options = {})
-    super(options.merge(include: [:trips, :visits]))
+    super(options.merge(include: [:visits, :wishlists]))
   end
 
 end

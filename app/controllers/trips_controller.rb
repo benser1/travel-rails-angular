@@ -31,10 +31,6 @@ class TripsController < ApplicationController
         format.json { render :json => @trip }
       end
     end
-    @trip.update(trip_params)
-    respond_to do |format|
-      format.json { render :json => @trip }
-    end
   end
 
   private

@@ -7,6 +7,7 @@ function MapsCtrl($state, $stateParams, $http, $rootScope, uiGmapGoogleMapApi){
   ctrl.zoomA = 3;
 
   ctrl.visitedList = [];
+  ctrl.wishList = [];
 
   navigator.geolocation.getCurrentPosition(function(pos) {
     ctrl.userLat = pos.coords.latitude;
@@ -15,9 +16,9 @@ function MapsCtrl($state, $stateParams, $http, $rootScope, uiGmapGoogleMapApi){
 
     uiGmapGoogleMapApi.then(function(maps) {
 
-      ctrl.mapA = { center: { latitude: ctrl.userLat || ctrl.defaultLat, longitude: ctrl.userLong || ctrl.defaultLong }, zoom: ctrl.zoomA };
+      ctrl.map = { center: { latitude: ctrl.userLat || ctrl.defaultLat, longitude: ctrl.userLong || ctrl.defaultLong }, zoom: ctrl.zoomA };
 
-      $http.get('/attractions.json')
+      $http.get('/users/' + $stateParams.id + '/visited.json')
       .success(function(data, response){
         data.forEach(function(attraction){
           var address = attraction.address + " " + attraction.city.name + " " + attraction.country.name + " " + attraction.zip
@@ -31,6 +32,25 @@ function MapsCtrl($state, $stateParams, $http, $rootScope, uiGmapGoogleMapApi){
               mapData["coords"]["latitude"] = results[0].geometry.location.lat()
               mapData["coords"]["longitude"] = results[0].geometry.location.lng()
               ctrl.visitedList.push(mapData);
+            }
+          });
+        })
+      })
+
+      $http.get('/users/' + $stateParams.id + '/wishlist.json')
+      .success(function(data, response){
+        data.forEach(function(attraction){
+          var address = attraction.address + " " + attraction.city.name + " " + attraction.country.name + " " + attraction.zip
+          var geocoder = new google.maps.Geocoder();
+          geocoder.geocode( { "address": address }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
+              var mapData = {};
+              mapData["id"] = attraction.id
+              mapData["options"] = {labelContent: attraction.name}
+              mapData["coords"] = {}
+              mapData["coords"]["latitude"] = results[0].geometry.location.lat()
+              mapData["coords"]["longitude"] = results[0].geometry.location.lng()
+              ctrl.wishList.push(mapData);
             }
           });
         })

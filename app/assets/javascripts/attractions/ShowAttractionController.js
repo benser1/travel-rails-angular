@@ -16,7 +16,13 @@ function ShowAttractionController ($stateParams, $scope, $http, $state, $locatio
     ctrl.attraction.$update(function(result){
       console.log(result);
     });
-    $state.go($state.current, {}, {reload: true});
+  };
+
+  ctrl.addWishlist = function(user){
+    ctrl.attraction.wishlists.push(user);
+    ctrl.attraction.$update(function(result){
+      console.log(result);
+    });
   };
 
   ctrl.deleteAttraction = function(attraction) {
