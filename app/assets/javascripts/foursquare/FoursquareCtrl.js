@@ -1,4 +1,4 @@
-function FoursquareCtrl($scope, placesExplorerService, $filter) {
+function FoursquareCtrl($scope, placesExplorerService, placesPhotosService, $filter, $uibModal) {
   $scope.exploreNearby = "New York";
   $scope.exploreQuery = "";
   $scope.filterValue = "";
@@ -65,48 +65,48 @@ function FoursquareCtrl($scope, placesExplorerService, $filter) {
 
   };
 
-  // $scope.showVenuePhotos = function (venueId, venueName) {
-  //
-  //   placesPhotosService.get({ venueId: venueId }, function (photosResult) {
-  //
-  //     var modalInstance = $modal.open({
-  //       templateUrl: 'app/views/placesphotos.html',
-  //       controller: 'placesPhotosController',
-  //       resolve: {
-  //         venueName: function () {
-  //           return venueName;
-  //         },
-  //         venuePhotos: function () {
-  //           return photosResult.response.photos.items;
-  //         }
-  //       }
-  //     });
-  //
-  //     modalInstance.result.then(function () {
-  //       //$scope.selected = selectedItem;
-  //     }, function () {
-  //       //alert('Modal dismissed at: ' + new Date());
-  //     });
-  //
-  //   });
-  //
-  // };
+  $scope.showVenuePhotos = function (venueId, venueName) {
 
-  // $scope.buildCategoryIcon = function (icon) {
+    placesPhotosService.get({ venueId: venueId }, function (photosResult) {
+
+      var modalInstance = $uibModal.open({
+        templateUrl: 'foursquare/photos.html',
+        controller: 'foursquarePhotosCtrl',
+        resolve: {
+          venueName: function () {
+            return venueName;
+          },
+          venuePhotos: function () {
+            return photosResult.response.photos.items;
+          }
+        }
+      });
+
+      modalInstance.result.then(function () {
+        //$scope.selected = selectedItem;
+      }, function () {
+        //alert('Modal dismissed at: ' + new Date());
+      });
+
+    });
+
+  };
+
+  $scope.buildCategoryIcon = function (icon) {
+
+    return icon.prefix + '44' + icon.suffix;
+  };
   //
-  //   return icon.prefix + '44' + icon.suffix;
-  // };
-  //
-  // $scope.buildVenueThumbnail = function (photo) {
-  //
-  //   return photo.items[0].prefix + '128x128' + photo.items[0].suffix;
-  // };
+  $scope.buildVenueThumbnail = function (photo) {
+
+    return photo.items[0].prefix + '128x128' + photo.items[0].suffix;
+  };
 
   // $scope.bookmarkPlace = function (venue) {
   //
   //   if (!placesDataService.getUserInContext()) {
   //
-  //     var modalInstance = $modal.open({
+  //     var modalInstance = $uibModal.open({
   //       templateUrl: 'app/views/userprofile.html',
   //       controller: 'userContextController',
   //       resolve: {

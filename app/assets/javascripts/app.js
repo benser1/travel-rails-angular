@@ -1,5 +1,5 @@
 angular
-  .module('app', ['Devise', 'ui.router', 'templates', 'ngResource', 'uiGmapgoogle-maps'])
+  .module('app', ['Devise', 'ui.bootstrap', 'ui.router', 'templates', 'ngResource', 'uiGmapgoogle-maps'])
   .config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({
       key: 'AIzaSyC3KDZfo5MeuO0d86HpOhPej5uBKC5CRJs',

@@ -20,5 +20,6 @@
 //= require angular-simple-logger/dist/angular-simple-logger
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap/dist/js/bootstrap
+//= require angular-bootstrap
+//= require bootstrap
 //= require_tree .

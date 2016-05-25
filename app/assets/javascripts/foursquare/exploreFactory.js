@@ -13,7 +13,7 @@ function placesExplorerService($resource) {
       client_id: requestParms.clientId,
       client_secret: requestParms.clientSecret,
       v: requestParms.version,
-      // venuePhotos: '1',
+      venuePhotos: '1',
       callback: 'JSON_CALLBACK'
     },
     {
