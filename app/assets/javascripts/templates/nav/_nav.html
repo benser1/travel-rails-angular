@@ -11,14 +11,25 @@
 
     <div class="collapse navbar-collapse" ng-controller="NavCtrl" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        
+        <li ng-hide="signedIn()"><a href="#/login">Log In</a></li>
+        <li ng-hide="signedIn()"><a href="#/register">Register</a></li>
+        <li ng-show="signedIn()"><a href="#/">{{ user.username }}</a></li>
+        <li ng-show="signedIn()" ui-sref="home.visited"><a href="#/visited">My Visits</a></li>
+        <li ng-show="signedIn()" ui-sref="home.wishlist"><a href="#/wishlist">My Wishlist</a></li>
+        <li ng-show="signedIn()"><a ng-click="logout()">Log Out</a></li>
         <li class="hidden">
             <a href="#" ></a>
         </li>
+
         <li class="dropdown">
           <a href="" class="dropdown-toggle" data-toggle="dropdown">Attractions <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li class="page-scroll">
-                <a ui-sref="home.newAttraction">New Attraction</a>
+                <a ui-sref="home.newAttraction">Create New Attraction</a>
+            </li>
+            <li class="page-scroll">
+                <a ui-sref="home.foursquare">Search For An Attraction</a>
             </li>
             <li class="page-scroll">
                 <a ui-sref="home.attractions">All Attractions</a>
@@ -38,18 +49,6 @@
           </ul>
         </li>
 
-        <li class="dropdown">
-          <a href="" class="dropdown-toggle" data-toggle="dropdown">Trips<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-          <li class="page-scroll">
-              <a ui-sref="home.newTrip">New Trip</a>
-          </li>
-          <li class="page-scroll">
-            <a ui-sref="home.trips">All Trips</a>
-          </li>
-        </ul>
-      </li>
-
       <li class="dropdown">
         <a href="" class="dropdown-toggle" data-toggle="dropdown">Cities <span class="caret"></span></a>
         <ul class="dropdown-menu">
@@ -61,14 +60,6 @@
           </li>
         </ul>
       </li>
-
-      <li ng-hide="signedIn()"><a href="#/login">Log In</a></li>
-      <li ng-hide="signedIn()"><a href="#/register">Register</a></li>
-      <li ng-show="signedIn()"><a href="#/">{{ user.username }}</a></li>
-      <li ng-show="signedIn()" ui-sref="home.visited"><a href="#/visited">My Visits</a></li>
-      <li ng-show="signedIn()" ui-sref="home.wishlist"><a href="#/wishlist">My Wishlist</a></li>
-      <li ng-show="signedIn()" ui-sref="home.foursquare"><a href="#/foursquare">Foursquare</a></li>
-      <li ng-show="signedIn()"><a ng-click="logout()">Log Out</a></li>
     </ul>
   </div>
 

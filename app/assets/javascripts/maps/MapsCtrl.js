@@ -4,7 +4,7 @@ function MapsCtrl($state, $stateParams, $http, $rootScope, uiGmapGoogleMapApi){
 
   ctrl.defaultLat = 44.2126995,
   ctrl.defaultLong = -100.2471641,
-  ctrl.zoomA = 3;
+  ctrl.zoom = 3;
 
   ctrl.visitedList = [];
   ctrl.wishList = [];
@@ -16,7 +16,7 @@ function MapsCtrl($state, $stateParams, $http, $rootScope, uiGmapGoogleMapApi){
 
     uiGmapGoogleMapApi.then(function(maps) {
 
-      ctrl.map = { center: { latitude: ctrl.userLat || ctrl.defaultLat, longitude: ctrl.userLong || ctrl.defaultLong }, zoom: ctrl.zoomA };
+      ctrl.map = { center: { latitude: ctrl.userLat || ctrl.defaultLat, longitude: ctrl.userLong || ctrl.defaultLong }, zoom: ctrl.zoom };
 
       $http.get('/users/' + $stateParams.id + '/visited.json')
       .success(function(data, response){
