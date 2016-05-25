@@ -29,6 +29,11 @@ angular
           templateUrl: 'attractions/show.html',
           controller: 'ShowAttractionController as ctrl'
         })
+        .state('home.editAttraction', {
+          url: '/attractions/:id/edit',
+          templateUrl: 'attractions/edit.html',
+          controller: 'EditAttractionsCtrl as ctrl'
+        })
         .state('home.countries', {
           url: '/countries',
           templateUrl: 'countries/all.html',

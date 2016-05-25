@@ -5,27 +5,10 @@
 <h4>{{ctrl.attraction.address}}</h4>
 <h4>{{ctrl.attraction.zip}}</h4>
 
+<button><a href="#" ui-sref="home.editAttraction({id: ctrl.attraction.id})">Edit</a></button>
+
 <button ng-click="ctrl.deleteAttraction(ctrl.attraction)">Delete</button>
 
 <button ng-click="ctrl.addVisitor(ctrl.user)">Add to Visited List</button>
 
 <button ng-click="ctrl.addWishlist(ctrl.user)">Add to Wishlist</button>
-
-<div ng-show='ctrl.stateIsLoading' class="row">
-  <h3>Loading data... Please wait.</h3>
-    <div class="progress progress-striped active page-progress-bar">
-      <div class="progress-bar" style="width: 100%;"></div>
-    </div>
-</div>
-
-<div ng-hide='ctrl.stateIsLoading'>
-  <h2 class="page-header">Beaches Visited</h2>
-</div>
-<ui-gmap-google-map center="ctrl.mapA.center" zoom="ctrl.mapA.zoom">
-  <ui-gmap-marker ng-repeat="marker in ctrl.visitedList"
-    idKey='marker.id'
-    coords='marker.coords'
-    options='marker.options'
-    >
-  </ui-gmap-marker>
-</ui-gmap-google-map>

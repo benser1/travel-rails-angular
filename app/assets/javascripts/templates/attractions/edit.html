@@ -1,0 +1,33 @@
+<h1>Edit Attraction: {{ctrl.attraction.name}}</h1>
+
+<div class="new-country-form col-lg-5 col-md-4 col-sm-8 col-xs-4">
+  <div class="form-group">
+    <form ng-submit="ctrl.updateAttraction()">
+
+      <label for="name" class="col-lg-3 col-md-3 col-sm-4 col-xs-7 form-name">Name</label>
+      <input name="name" ng-model="ctrl.attraction.name" class="col-lg-5 col-md-5 col-sm-7 col-xs-7">
+      <br><br>
+
+      <label for="address" class="col-lg-3 col-md-3 col-sm-4 col-xs-7 form-name">address</label>
+      <input name="address" ng-model="ctrl.attraction.address" class="col-lg-5 col-md-5 col-sm-7 col-xs-7">
+      <br><br>
+
+      <label for="zip" class="col-lg-3 col-md-3 col-sm-4 col-xs-7 form-name">zip</label>
+      <input name="zip" ng-model="ctrl.attraction.zip" class="col-lg-5 col-md-5 col-sm-7 col-xs-7">
+      <br><br>
+
+      <select style="display:inline" ng-model="ctrl.attraction.country_id" class="col-lg-5 col-md-5 col-sm-7 col-xs-7 btn btn-default dropdown-toggle auth-select" ng-options="country.id as country.name for country in ctrl.countries" ng-required>
+        <option disabled selected>Select a Country</option>
+        <!-- <option  ng-repeat="country in ctrl.countries" value="{{country.id}}">{{country.name}}</option> -->
+      </select>
+      <br><br>
+
+      <select style="display:inline" ng-model="ctrl.attraction.city_id" class="col-lg-5 col-md-5 col-sm-7 col-xs-7 btn btn-default dropdown-toggle auth-select" ng-options="city.id as city.name for city in ctrl.cities | filter:{country_id:ctrl.attraction.country_id}" ng-disabled="!ctrl.attraction.country_id">
+        <option value="" disabled selected>Select a City</option>
+      </select>
+      <br><br>
+
+      <input type="submit" value="Update Attraction" class="col-lg-5 col-md-5 col-sm-6 col-xs-7 btn btn-primary" id="city-button">
+    </form>
+  </div>
+</div>

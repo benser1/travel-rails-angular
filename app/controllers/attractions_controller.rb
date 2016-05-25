@@ -36,6 +36,11 @@ class AttractionsController < ApplicationController
       respond_to do |format|
         format.json { render :json => @attraction }
       end
+    else
+      @attraction.update(attraction_params)
+      respond_to do |format|
+        format.json { render :json => @attraction }
+      end
     end
   end
 
