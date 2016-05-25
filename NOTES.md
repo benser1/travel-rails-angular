@@ -3,3 +3,5 @@
 - add foursquare
 
 - Fix the loading bar on maps page / remove it
+
+- Add validations in models

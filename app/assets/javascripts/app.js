@@ -103,6 +103,11 @@ angular
           url: '/wishlist',
           templateUrl: 'maps/wishlist.html',
           controller: 'MapsCtrl as ctrl'
+        })
+        .state('home.foursquare', {
+          url: '/foursquare',
+          templateUrl: 'foursquare/search.html',
+          controller: 'FoursquareCtrl as ctrl'
         });
 
         $urlRouterProvider.otherwise('home');
