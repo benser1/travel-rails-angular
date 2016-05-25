@@ -9,7 +9,7 @@ class CountriesController < ApplicationController
   end
 
   def create
-    @country = Country.new(country_params)
+    @country = Country.find_or_create_by(country_params)
     if @country.save
       respond_to do |format|
         format.json { render :json => @country }
