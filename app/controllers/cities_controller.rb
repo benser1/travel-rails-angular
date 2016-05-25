@@ -9,7 +9,7 @@ class CitiesController < ApplicationController
   end
 
   def create
-    @city = City.new(city_params)
+    @city = City.find_or_create_by(city_params)
     if @city.save
       respond_to do |format|
         format.json { render :json => @city }

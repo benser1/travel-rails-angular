@@ -1,4 +1,4 @@
-function FoursquareCtrl($scope, placesExplorerService, placesPhotosService, $filter, $uibModal, Attraction, Country) {
+function FoursquareCtrl($scope, placesExplorerService, placesPhotosService, $filter, $uibModal, Attraction, Country, City) {
   $scope.exploreNearby = "New York";
   $scope.exploreQuery = "";
   $scope.filterValue = "";
@@ -105,19 +105,24 @@ function FoursquareCtrl($scope, placesExplorerService, placesPhotosService, $fil
 
   $scope.bookmarkPlace = function(venue) {
     ctrl.country = new Country({name: venue.location.country})
-    // var something = ctrl.country.id
-    ctrl.country.$save();
-    ctrl.countryname = Country.query({ id: venue.location.country.id });
-    // ctrl.countryname = ctrl.countryname.id;
-    ctrl.attraction = new Attraction({
-      name: venue.name,
-      address: venue.location.address,
-      zip: venue.location.postalCode,
-      country_id: ctrl.countryname
-      // city_id: 1
+    ctrl.country.$save()
+    .then(function() {
+    ctrl.city = new City({name: venue.location.city, country_id: ctrl.country.id })
+    ctrl.city.$save()
+
+    .then(function() {
+      ctrl.attraction = new Attraction({
+        name: venue.name,
+        address: venue.location.address,
+        zip: venue.location.postalCode,
+        country_id: ctrl.country.id,
+        city_id: ctrl.city.id
+      });
+      ctrl.attraction.$save();
     });
-    ctrl.attraction.$save();
-  }
+    })
+  };
+
 
 }
 
