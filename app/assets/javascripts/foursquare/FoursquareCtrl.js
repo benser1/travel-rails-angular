@@ -1,4 +1,4 @@
-function FoursquareCtrl($scope, placesExplorerService, placesPhotosService, $filter, $uibModal) {
+function FoursquareCtrl($scope, placesExplorerService, placesPhotosService, $filter, $uibModal, Attraction, Country) {
   $scope.exploreNearby = "New York";
   $scope.exploreQuery = "";
   $scope.filterValue = "";
@@ -92,44 +92,36 @@ function FoursquareCtrl($scope, placesExplorerService, placesPhotosService, $fil
 
   };
 
-  $scope.buildCategoryIcon = function (icon) {
-
-    return icon.prefix + '44' + icon.suffix;
-  };
+  // $scope.buildCategoryIcon = function (icon) {
+  //
+  //   return icon.prefix + '44' + icon.suffix;
+  // };
   //
   $scope.buildVenueThumbnail = function (photo) {
 
     return photo.items[0].prefix + '128x128' + photo.items[0].suffix;
   };
 
-  // $scope.bookmarkPlace = function (venue) {
-  //
-  //   if (!placesDataService.getUserInContext()) {
-  //
-  //     var modalInstance = $uibModal.open({
-  //       templateUrl: 'app/views/userprofile.html',
-  //       controller: 'userContextController',
-  //       resolve: {
-  //         venue: function () {
-  //           return venue;
-  //         }
-  //       }
-  //     });
-  //   }
-  //   else {
-  //     placesDataService.savePlace(venue).then(
-  //       function (results) {
-  //         // Do nothing as toaster showing from service
-  //       },
-  //       function (results) {
-  //         // Do nothing as toaster showing from service
-  //       });
-  //     }
-  //
-  //   };
+  var ctrl = this;
+
+  $scope.bookmarkPlace = function(venue) {
+    ctrl.country = new Country({name: venue.location.country})
+    // var something = ctrl.country.id
+    ctrl.country.$save();
+    ctrl.countryname = Country.query({ id: venue.location.country.id });
+    // ctrl.countryname = ctrl.countryname.id;
+    ctrl.attraction = new Attraction({
+      name: venue.name,
+      address: venue.location.address,
+      zip: venue.location.postalCode,
+      country_id: ctrl.countryname
+      // city_id: 1
+    });
+    ctrl.attraction.$save();
   }
+}
 
 
-  angular
-  .module('app')
-  .controller('FoursquareCtrl', FoursquareCtrl);
+angular
+.module('app')
+.controller('FoursquareCtrl', FoursquareCtrl);

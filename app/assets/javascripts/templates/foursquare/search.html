@@ -49,7 +49,7 @@
               <span class="badge">{{item.venue.rating | number:1}}</span>
             </div>
             <div class="col-xs-6 col-md-8">
-              <p class="text-warning"><small>{{(item.venue.location.address != null) && item.venue.location.address}} - {{item.venue.categories[0].shortName}}</small></p>
+              <p class="text-warning"><small>{{item.venue.location.address}} -   {{item.venue.location.city}}, {{item.venue.location.country}} -  {{item.venue.categories[0].shortName}}</small></p>
               <p>{{item.tips[0].text}}</p>
               <hr class="seperator" />
               <a href="" data-ng-click="bookmarkPlace(item.venue)"><span class="glyphicon glyphicon-bookmark"></span>Bookmark Place</a>
