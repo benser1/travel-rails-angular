@@ -1,5 +1,5 @@
 angular
-  .module('app', ['Devise', 'ui.bootstrap', 'ui.router', 'templates', 'ngResource', 'uiGmapgoogle-maps'])
+  .module('app', ['Devise', 'ui.bootstrap', 'ui.router', 'templates', 'ngResource', 'uiGmapgoogle-maps', 'ngMessages'])
   .config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({
       key: 'AIzaSyC3KDZfo5MeuO0d86HpOhPej5uBKC5CRJs',
@@ -110,7 +110,7 @@ angular
           controller: 'MapsCtrl as ctrl'
         })
         .state('home.foursquare', {
-          url: '/foursquare',
+          url: '/search',
           templateUrl: 'foursquare/search.html',
           controller: 'FoursquareCtrl as ctrl'
         });
