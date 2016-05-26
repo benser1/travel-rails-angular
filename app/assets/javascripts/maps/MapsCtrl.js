@@ -1,4 +1,4 @@
-function MapsCtrl($state, $stateParams, $http, $rootScope, uiGmapGoogleMapApi){
+function MapsCtrl($state, $stateParams, $http, $rootScope, uiGmapGoogleMapApi, Attraction, Auth){
   var ctrl = this;
   ctrl.stateIsLoading = true;
 
@@ -8,6 +8,12 @@ function MapsCtrl($state, $stateParams, $http, $rootScope, uiGmapGoogleMapApi){
 
   ctrl.visitedList = [];
   ctrl.wishList = [];
+  ctrl.attractions = Attraction.query();
+
+  Auth.currentUser()
+    .then(function(user){
+      ctrl.user = user;
+    });
 
   navigator.geolocation.getCurrentPosition(function(pos) {
     ctrl.userLat = pos.coords.latitude;
@@ -18,7 +24,7 @@ function MapsCtrl($state, $stateParams, $http, $rootScope, uiGmapGoogleMapApi){
 
       ctrl.map = { center: { latitude: ctrl.userLat || ctrl.defaultLat, longitude: ctrl.userLong || ctrl.defaultLong }, zoom: ctrl.zoomA };
 
-      $http.get('/users/' + $stateParams.id + '/visited.json')
+      $http.get('/users/' + ctrl.user.id + '/visited.json')
       .success(function(data, response){
         data.forEach(function(attraction){
           var address = attraction.address + " " + attraction.city.name + " " + attraction.country.name + " " + attraction.zip
@@ -37,7 +43,7 @@ function MapsCtrl($state, $stateParams, $http, $rootScope, uiGmapGoogleMapApi){
         })
       })
 
-      $http.get('/users/' + $stateParams.id + '/wishlist.json')
+      $http.get('/users/' + ctrl.user.id + '/wishlist.json')
       .success(function(data, response){
         data.forEach(function(attraction){
           var address = attraction.address + " " + attraction.city.name + " " + attraction.country.name + " " + attraction.zip

@@ -10,6 +10,8 @@
 
 <div ng-hide='ctrl.stateIsLoading'>
 </div>
+<div class="container col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="row col-col-8 col-lg-8 col-md-8 col-sm-8 col-xs-8">
 <ui-gmap-google-map center="ctrl.map.center" zoom="ctrl.map.zoom">
   <ui-gmap-marker ng-repeat="marker in ctrl.wishList"
     idKey='marker.id'
@@ -18,3 +20,10 @@
     >
   </ui-gmap-marker>
 </ui-gmap-google-map>
+</div>
+<div class="row col-col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4" ng-repeat="attraction in ctrl.attractions | filter:{wishlists:{user_id:ctrl.user.id}}">
+  <ul>
+    <li>{{attraction.name}} -- {{attraction.city.name}}, {{attraction.country.name}}</li>
+  </ul>
+</div>
+</div>

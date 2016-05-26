@@ -11,18 +11,26 @@ function ShowAttractionController ($stateParams, $scope, $http, $state, $locatio
     ctrl.user = user;
   });
 
+  // ctrl.addVisitor = function(user){
+  //   ctrl.attraction.visitors.push(user);
+  //   ctrl.attraction.$update(function(result){
+  //     console.log(result);
+  //   });
+  // };
+
+  // ctrl.addWishlist = function(user){
+  //   ctrl.attraction.wishlists.push(user);
+  //   ctrl.attraction.$update(function(result){
+  //     console.log(result);
+  //   });
+  // };
+
   ctrl.addVisitor = function(user){
-    ctrl.attraction.visitors.push(user);
-    ctrl.attraction.$update(function(result){
-      console.log(result);
-    });
+    $http.post('/attractions/' + ctrl.attraction.id + '/visited');
   };
 
   ctrl.addWishlist = function(user){
-    ctrl.attraction.wishlists.push(user);
-    ctrl.attraction.$update(function(result){
-      console.log(result);
-    });
+    $http.post('/attractions/' + ctrl.attraction.id + '/wishes');
   };
 
   ctrl.deleteAttraction = function(attraction) {

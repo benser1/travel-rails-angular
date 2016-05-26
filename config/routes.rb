@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :visits
-  resources :trips
   resources :attractions
   resources :cities
   resources :countries
@@ -14,6 +13,7 @@ Rails.application.routes.draw do
 
   root 'application#home'
 
-  # post 'attractions/:id/visits' => 'visits#create'
+  post 'attractions/:id/wishes' => 'wishlists#create'
 
+  post 'attractions/:id/visited' => 'visits#create'
 end

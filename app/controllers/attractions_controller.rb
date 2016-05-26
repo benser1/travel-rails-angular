@@ -1,5 +1,6 @@
 class AttractionsController < ApplicationController
   respond_to :json
+
   def index
     respond_with Attraction.all
   end
@@ -23,24 +24,9 @@ class AttractionsController < ApplicationController
 
   def update
     @attraction = Attraction.find(params[:id])
-    user = current_user
-    if !@attraction.visitors.include?(user)
-      @attraction.visitors << user
-      @attraction.update(attraction_params)
-      respond_to do |format|
-        format.json { render :json => @attraction }
-      end
-    elsif !@attraction.wishes.include?(user)
-      @attraction.wishes << user
-      @attraction.update(attraction_params)
-      respond_to do |format|
-        format.json { render :json => @attraction }
-      end
-    else
-      @attraction.update(attraction_params)
-      respond_to do |format|
-        format.json { render :json => @attraction }
-      end
+    @attraction.update(attraction_params)
+    respond_to do |format|
+      format.json { render :json => @attraction }
     end
   end
 

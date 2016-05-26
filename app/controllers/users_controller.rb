@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def wishlist
-    attractions = current_user.wishlist_attractions
+    attractions = current_user.attractions
     render json: attractions
   end
 

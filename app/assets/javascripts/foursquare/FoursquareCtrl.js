@@ -109,18 +109,17 @@ function FoursquareCtrl($scope, placesExplorerService, placesPhotosService, $fil
     .then(function() {
     ctrl.city = new City({name: venue.location.city, country_id: ctrl.country.id })
     ctrl.city.$save()
-
-    .then(function() {
-      ctrl.attraction = new Attraction({
-        name: venue.name,
-        address: venue.location.address,
-        zip: venue.location.postalCode,
-        country_id: ctrl.country.id,
-        city_id: ctrl.city.id
+      .then(function() {
+        ctrl.attraction = new Attraction({
+          name: venue.name,
+          address: venue.location.address,
+          zip: venue.location.postalCode,
+          country_id: ctrl.country.id,
+          city_id: ctrl.city.id
+        });
+        ctrl.attraction.$save();
       });
-      ctrl.attraction.$save();
     });
-    })
   };
 
 
