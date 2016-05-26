@@ -1,7 +1,9 @@
 <h1>All Countries</h1>
 
-<div ng-repeat="country in ctrl.countries">
-  <ul>
-    <li><a href="" ui-sref="home.showCountry({id: country.id})">{{country.name}}</a></li>
-  </ul>
+<div class="container">
+  <div ng-repeat="country in ctrl.countries">
+    <ul class="list-group row col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <li class="list-group-item text-center"><a href="" ui-sref="home.showCountry({id: country.id})">{{country.name}}</a></li>
+    </ul>
+  </div>
 </div>

@@ -1,9 +1,9 @@
-<h1>Country Show Page</h1>
+<h1>{{ctrl.country.name}}</h1>
 
-<h3>{{ctrl.country.name}}</h3>
-
-<ul>
-  <li ng-repeat="city in ctrl.cities | filter:{country_id:ctrl.country.id}"><a href="#" ui-sref="home.showCity({id: city.id})">
-    {{city.name}}</a>
-  </li>
-</ul>
+<div class="container">
+  <div ng-repeat="city in ctrl.cities | filter:{country_id:ctrl.country.id}">
+    <ul class="list-group row col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <li class="list-group-item text-center"><a href="" ui-sref="home.showCity({id: city.id})">{{city.name}}</a></li>
+    </ul>
+  </div>
+</div>

@@ -1,7 +1,9 @@
 <h1>All Cities</h1>
 
-<div ng-repeat="city in ctrl.cities">
-  <ul>
-    <li><a href="#" ui-sref="home.showCity({id: city.id})">{{city.name}}</a>, <a href="#" ui-sref="home.showCountry({id: city.country.id})"> {{city.country.name}}</a></li>
-  </ul>
+<div class="container">
+  <div ng-repeat="city in ctrl.cities">
+    <ul class="list-group row col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <li class="list-group-item text-center"><a href="" ui-sref="home.showCity({id: city.id})">{{city.name}}</a></li>
+    </ul>
+  </div>
 </div>

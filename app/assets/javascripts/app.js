@@ -10,6 +10,11 @@ angular
   .config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider){
       $stateProvider
+      .state('main', {
+        url: '/',
+        templateUrl: 'home/main.html',
+        controller: 'HomeCtrl'
+      })
         .state('home', {
           url: '/home',
           templateUrl: 'home/home.html',
@@ -116,5 +121,5 @@ angular
           controller: 'FoursquareCtrl as ctrl'
         });
 
-        $urlRouterProvider.otherwise('home');
+        $urlRouterProvider.otherwise('/');
     }]);
