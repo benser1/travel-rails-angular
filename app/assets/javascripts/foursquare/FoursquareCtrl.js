@@ -80,15 +80,7 @@ function FoursquareCtrl($scope, placesExplorerService, placesPhotosService, $fil
           }
         }
       });
-
-      modalInstance.result.then(function () {
-        //$scope.selected = selectedItem;
-      }, function () {
-        //alert('Modal dismissed at: ' + new Date());
-      });
-
     });
-
   };
 
   $scope.buildCategoryIcon = function (icon) {

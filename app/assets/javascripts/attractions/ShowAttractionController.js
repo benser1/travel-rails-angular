@@ -1,4 +1,4 @@
-function ShowAttractionController ($stateParams, $scope, $http, $state, $location, uiGmapGoogleMapApi, Auth, City, Attraction, Country) {
+function ShowAttractionController ($stateParams, $http, $state, $location, uiGmapGoogleMapApi, Auth, City, Attraction, Country) {
 
   var ctrl = this;
 
@@ -10,20 +10,6 @@ function ShowAttractionController ($stateParams, $scope, $http, $state, $locatio
   .then(function(user){
     ctrl.user = user;
   });
-
-  // ctrl.addVisitor = function(user){
-  //   ctrl.attraction.visitors.push(user);
-  //   ctrl.attraction.$update(function(result){
-  //     console.log(result);
-  //   });
-  // };
-
-  // ctrl.addWishlist = function(user){
-  //   ctrl.attraction.wishlists.push(user);
-  //   ctrl.attraction.$update(function(result){
-  //     console.log(result);
-  //   });
-  // };
 
   ctrl.addVisitor = function(user){
     $http.post('/attractions/' + ctrl.attraction.id + '/visited');

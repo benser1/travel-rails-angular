@@ -1,4 +1,4 @@
-function AttractionsCtrl($location, Attraction, Country, City, Trip, $scope, $stateParams, $http){
+function AttractionsCtrl($location, Attraction, Country, City){
   var ctrl = this;
 
   ctrl.countries = Country.query();
