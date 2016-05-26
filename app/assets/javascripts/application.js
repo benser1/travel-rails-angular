@@ -21,5 +21,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular-bootstrap
+//= require angular-messages
 //= require bootstrap
 //= require_tree .

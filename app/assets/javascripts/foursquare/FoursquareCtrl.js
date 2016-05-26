@@ -1,4 +1,5 @@
 function FoursquareCtrl($scope, placesExplorerService, placesPhotosService, $filter, $uibModal, Attraction, Country, City) {
+
   $scope.exploreNearby = "New York";
   $scope.exploreQuery = "";
   $scope.filterValue = "";
@@ -7,7 +8,6 @@ function FoursquareCtrl($scope, placesExplorerService, placesPhotosService, $fil
   $scope.filteredPlaces = [];
   $scope.filteredPlacesCount = 0;
 
-  //paging
   $scope.totalRecordsCount = 0;
   $scope.pageSize = 10;
   $scope.currentPage = 1;
@@ -91,13 +91,11 @@ function FoursquareCtrl($scope, placesExplorerService, placesPhotosService, $fil
 
   };
 
-  // $scope.buildCategoryIcon = function (icon) {
-  //
-  //   return icon.prefix + '44' + icon.suffix;
-  // };
-  //
-  $scope.buildVenueThumbnail = function (photo) {
+  $scope.buildCategoryIcon = function (icon) {
+    return icon.prefix + 'bg_44' + icon.suffix;
+  };
 
+  $scope.buildVenueThumbnail = function (photo) {
     return photo.items[0].prefix + '128x128' + photo.items[0].suffix;
   };
 
@@ -121,10 +119,10 @@ function FoursquareCtrl($scope, placesExplorerService, placesPhotosService, $fil
       });
     });
   };
-
-
+  $(document).on("click", "#bookmarkButton", function(){
+   $('.alert').show().fadeOut(5000);
+ });
 }
-
 
 angular
 .module('app')

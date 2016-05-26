@@ -21,7 +21,7 @@
     <div class="well well-sm" data-ng-show="totalRecordsCount == 0">
       <h5>No Places found Near by ({{exploreNearby}})</h5>
     </div>
-    <toaster-container toaster-options="{'time-out': 1700}"></toaster-container>
+
     <div data-ng-show="totalRecordsCount > 0">
       <div class="row">
         <div class="col-md-12">
@@ -52,13 +52,14 @@
               <p class="text-warning"><small>{{item.venue.location.address}} -   {{item.venue.location.city}}, {{item.venue.location.country}} -  {{item.venue.categories[0].shortName}}</small></p>
               <p>{{item.tips[0].text}}</p>
               <hr class="seperator" />
-              <a href="" data-ng-click="bookmarkPlace(item.venue)"><span class="glyphicon glyphicon-bookmark"></span>Bookmark Place</a>
+              <button id="bookmarkButton" data-ng-click="bookmarkPlace(item.venue)"><span class="glyphicon glyphicon-bookmark"></span>Bookmark Attraction</button>
             </div>
             <div class="col-xs-4 col-md-3">
               <a href="" data-ng-click="showVenuePhotos(item.venue.id,item.venue.name)">
                 <img data-ng-src="{{buildVenueThumbnail(item.venue.photos.groups[0])}}" class="img-thumbnail" /></a>
               </div>
             </div>
+            <div class="alert alert-success" role="alert">Attraction Successfully Added To Attractions List</div>
 
           </li>
         </ul>
