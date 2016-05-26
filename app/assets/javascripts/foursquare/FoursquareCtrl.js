@@ -120,6 +120,9 @@ function FoursquareCtrl($scope, placesExplorerService, placesPhotosService, $fil
     });
     })
   };
+  $(document).on("click", "#bookmarkButton", function(){
+   $('.alert').show().fadeOut(5000);
+ });
 }
 
 angular
