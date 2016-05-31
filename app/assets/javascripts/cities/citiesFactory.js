@@ -1,5 +1,5 @@
 function City($resource) {
-  var City = $resource('http://localhost:3000/cities/:id.json', {id: '@id'}, {
+  var City = $resource('/cities/:id.json', {id: '@id'}, {
   update: { method: 'PUT' }
 });
   return City;
