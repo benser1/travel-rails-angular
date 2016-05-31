@@ -1,0 +1,11 @@
+<h1>City -- {{ctrl.city.name}}, <a href="#" ui-sref="home.showCountry({id: ctrl.city.country.id})">{{ctrl.city.country.name}}</a></h1>
+
+<h1>Attractions:</h1>
+
+<div class="container">
+  <div ng-repeat="attraction in ctrl.attractions | filter:{city_id:ctrl.city.id} | orderBy:'name'">
+    <ul class="list-group row col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <li class="list-group-item text-center"><a href="#" ui-sref="home.showAttraction({id: attraction.id})">{{attraction.name}}</a></li>
+    </ul>
+  </div>
+</div>

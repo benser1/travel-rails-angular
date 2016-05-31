@@ -1,0 +1,8 @@
+<h1>Trip: {{ctrl.trip.name}}</h1>
+
+<h2>Attractions added:</h2>
+<div ng-repeat="attraction in ctrl.trip.attractions">
+  <ul>
+    <li>{{attraction.name}} -- {{attraction.city.name}}, {{attraction.country.name}}</li>
+  </ul>
+</div>

@@ -1,0 +1,30 @@
+<h1>My Wishlist</h1>
+
+
+<div class="container" ng-show="ctrl.stateIsLoading">
+  <h2>Map is Loading</h2>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+      70%
+    </div>
+  </div>
+</div>
+<div ng-hide='ctrl.stateIsLoading'>
+</div>
+<div class="container">
+<div>
+<ui-gmap-google-map center="ctrl.map.center" zoom="ctrl.map.zoom">
+  <ui-gmap-marker ng-repeat="marker in ctrl.visitedList"
+    idKey='marker.id'
+    coords='marker.coords'
+    options='marker.options'
+    >
+  </ui-gmap-marker>
+</ui-gmap-google-map>
+</div><br><br>
+<div ng-repeat="attraction in ctrl.attractions | filter:{visits:{user_id:ctrl.user.id}}" class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
+  <ul class="list-group">
+    <li class="list-group-item"><a ui-sref="home.showAttraction(attraction)">{{attraction.name}} -- {{attraction.city.name}}, {{attraction.country.name}}</a></li>
+  </ul>
+</div>
+</div>

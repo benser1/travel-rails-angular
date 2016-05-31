@@ -1,0 +1,13 @@
+<h1>All Attractions</h1>
+
+<div ng-repeat="attraction in ctrl.attractions | orderBy:'country'" class="container">
+  <ul class="list-group row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="list-group-item text-center">
+      <li>Name: <a href="#" ui-sref="home.showAttraction({id: attraction.id})">{{attraction.name}}</a></li>
+      <li>Address: {{attraction.address}}</li>
+      <li>Zip: {{attraction.zip}}</li>
+      <li>City Name: <a href="#" ui-sref="home.showCity({id: attraction.city.id})">{{attraction.city.name}}</a></li>
+      <li>Country Name: <a href="#" ui-sref="home.showCountry({id: attraction.country.id})">{{attraction.country.name}}</a></li>
+    </div>
+  </ul>
+</div>

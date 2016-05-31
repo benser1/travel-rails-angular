@@ -1,0 +1,20 @@
+<h1>New City</h1>
+
+<div class="new-country-form col-lg-5 col-md-4 col-sm-8 col-xs-4">
+  <div class="form-group" ng-class="{ 'has-error': cityForm.name.$touched && cityForm.name.$invalid }">
+    <form ng-submit="ctrl.addCity()" name="cityForm">
+      <label for="name" class="col-lg-2 col-md-3 col-sm-4 col-xs-7 form-name">Name</label>
+      <input name="name" ng-model="ctrl.city.name" class="col-lg-4 col-md-5 col-sm-7 col-xs-7" ng-minlength='2' required>
+
+      <select style="display:inline" ng-model="ctrl.city.country_id" class="col-lg-5 col-md-5 col-sm-7 col-xs-7 btn btn-default dropdown-toggle" required>
+        <option value="" disabled selected>Select a Country</option>
+        <option  ng-repeat="country in ctrl.countries" value="{{country.id}}">{{country.name}}</option>
+      </select>
+      <br><br>
+      <input type="submit" value="Add City" class="col-lg-6 col-md-5 col-sm-6 col-xs-7 btn btn-primary" id="city-button"><br><br>
+      <div class="help-block" ng-messages="cityForm.name.$error" ng-show="cityForm.name.$touched">
+        <div ng-messages-include="messages/messages.html"></div>
+      </div>
+    </form>
+  </div>
+</div>

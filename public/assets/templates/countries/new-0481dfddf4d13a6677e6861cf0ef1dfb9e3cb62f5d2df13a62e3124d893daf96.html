@@ -1,0 +1,14 @@
+<h1>New Country</h1>
+
+<div class="new-country-form col-lg-5 col-md-4 col-sm-8 col-xs-4">
+  <div class="form-group" ng-class="{ 'has-error': countryForm.name.$touched && countryForm.name.$invalid }">
+    <form ng-submit="ctrl.addCountry()" name="countryForm">
+      <label for="name" class="col-lg-2 col-md-3 col-sm-4 col-xs-7 form-name">Name</label>
+      <input name="name" ng-model="ctrl.country.name" class="col-lg-4 col-md-5 col-sm-6 col-xs-7" ng-minlength='2' required>
+      <input type="submit" value="Add Country" class="col-lg-4 col-md-5 col-sm-6 col-xs-7 btn btn-primary"><br><br>
+      <div class="help-block" ng-messages="countryForm.name.$error" ng-show="countryForm.name.$touched">
+        <div ng-messages-include="messages/messages.html"></div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<h1>All Trips</h1>
+
+<div ng-repeat="trip in ctrl.trips">
+  <ul>
+    <li><a href="" ui-sref="home.showTrip({id: trip.id})">{{ trip.name }}</a> - {{ trip.user.username }}</li>
+  </ul>
+</div>
