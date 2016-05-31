@@ -1,5 +1,5 @@
 function Country($resource) {
-  var Country = $resource('/countries/:id.json', {id: '@id'}, {
+  var Country = $resource('/countries/:id', {id: '@id'}, {
   update: { method: 'PUT' }
 });
   return Country;
