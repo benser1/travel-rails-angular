@@ -83,4 +83,5 @@ production:
   <<: *default
   database: travel-rails-angular_production
   username: travel-rails-angular
-  password: <%= ENV['TRAVEL-RAILS-ANGULAR_DATABASE_PASSWORD'] %>
+  password: password
+  # password: <%= ENV['TRAVEL-RAILS-ANGULAR_DATABASE_PASSWORD'] %>
