@@ -531,7 +531,7 @@ angular.module('myModule', ['Devise']).
 
         // Also you can change host URL for backend calls
         // (for example if it's on another server than your angular app)
-        AuthProvider.baseUrl('http://foursquare-trip-planner.herokuapp.com');
+        AuthProvider.baseUrl('http://localhost:3000');
 
         // Customize user parsing
         // NOTE: **MUST** return a truth-y expression
